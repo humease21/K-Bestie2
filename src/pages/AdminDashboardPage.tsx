@@ -46,7 +46,7 @@ function AnimatedNumber({ value, color }: { value: number, color: string }) {
 }
 
 // Toast Component
-function Toast({ message, type, onClose }: { message: string, type: 'success' | 'error', onClose: () => void }) {
+function Toast({ message, type, onClose }: { message: string, type: 'success' | 'error', onClose: () => void, key?: any }) {
   return (
     <motion.div
       initial={{ x: 100, opacity: 0 }}
@@ -104,7 +104,7 @@ export default function AdminDashboardPage() {
 
   // --- Session Security ---
   useEffect(() => {
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: any;
 
     const resetTimer = () => {
       if (timeoutId) clearTimeout(timeoutId);
