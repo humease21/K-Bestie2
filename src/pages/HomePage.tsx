@@ -325,7 +325,7 @@ export default function HomePage() {
             </motion.div>
             
             {/* Horizontal Tabs on Mobile */}
-            <div className="flex lg:flex-col gap-2 md:gap-4 mt-6 md:mt-8 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
+            <div className="flex lg:flex-col gap-3 md:gap-4 mt-6 md:mt-8 overflow-x-auto pb-4 px-4 lg:px-0 scrollbar-hide -mx-6 lg:mx-0">
               {[
                 { id: "daily", title: "일간", fullTitle: "일간 감정 흐름", desc: "오늘 아이가 케이와 나누었던 대화 중 핵심적인 감정 변화를 요약합니다." },
                 { id: "weekly", title: "주간", fullTitle: "주간 심층 분석", desc: "한 주간의 대화 주제를 분류하여 아이의 관심사와 고민을 분석합니다." },
@@ -334,10 +334,10 @@ export default function HomePage() {
                 <button 
                   key={tab.id} 
                   onClick={() => setReportTab(tab.id as any)} 
-                  className={`flex-1 lg:flex-none text-center lg:text-left p-3 md:p-6 rounded-xl border transition-all duration-300 min-w-[80px] ${
+                  className={`flex-1 lg:flex-none text-center lg:text-left p-4 md:p-6 rounded-xl border transition-all duration-300 min-w-[100px] md:min-w-[120px] ${
                     reportTab === tab.id 
                       ? "bg-pure-white border-primary-deep shadow-md lg:translate-x-2 border-b-4" 
-                      : "bg-transparent border-black/5 hover:border-black/10"
+                      : "bg-pure-white/50 border-black/5 hover:border-black/10"
                   }`}
                 >
                   <h4 className={`text-[15px] md:text-[19px] font-bold ${reportTab === tab.id ? "text-primary-deep" : "text-charcoal"}`}>
