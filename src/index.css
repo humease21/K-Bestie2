@@ -1,0 +1,93 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Pretendard", sans-serif;
+  --font-brand: "Gaegu", cursive;
+
+  /* Brand Colors (Plan.md) */
+  --color-primary-deep: #1A6B5A;    /* Deep Teal */
+  --color-primary-light: #2D9F8F;   /* Light Teal */
+  --color-secondary-coral: #E8845A; /* Warm Coral */
+  --color-secondary-peach: #F5D0B9; /* Soft Peach */
+  
+  /* Neutral Palette */
+  --color-charcoal: #1E1E2D;
+  --color-dark-gray: #3A3A4A;
+  --color-medium-gray: #6B7280;
+  --color-light-gray: #F3F4F6;
+  --color-warm-white: #FAFAF8;
+  --color-pure-white: #FFFFFF;
+
+  /* Semantic Colors */
+  --color-success-green: #22C55E;
+  --color-warning-amber: #F59E0B;
+  --color-info-blue: #3B82F6;
+  --color-error-red: #EF4444;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  /* Shadows (Plan.md Custom) */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.15);
+  --shadow-glow: 0 0 40px rgba(26,107,90,0.15);
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-warm-white text-dark-gray font-sans antialiased overflow-x-hidden selection:bg-primary-deep/10 selection:text-primary-deep;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-charcoal font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .hero-gradient {
+    background: linear-gradient(135deg, #1A6B5A 0%, #2D9F8F 50%, #34B8A8 100%);
+  }
+
+  .footer-transition-gradient {
+    background: linear-gradient(180deg, #1A6B5A 0%, #1E1E2D 100%);
+  }
+
+  .section-fade {
+    background: linear-gradient(180deg, #FAFAF8 0%, #F3F4F6 100%);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Transition Presets */
+  .transition-premium {
+    transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .font-brand {
+    font-family: "Gaegu", cursive !important;
+  }
+}
