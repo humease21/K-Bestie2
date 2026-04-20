@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { CheckCircle2, Star, Sparkles, Gift, ArrowRight } from "lucide-react";
 import { supabase } from "../lib/supabase";
+import TermsModal from "../components/TermsModal";
 
 export default function PricingPage() {
   const [gender, setGender] = useState<string | null>(null);
@@ -16,6 +17,11 @@ export default function PricingPage() {
   const [nameError, setNameError] = useState("");
   const [phoneError, setPhoneError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [motivation, setMotivation] = useState("");
+  
+  // Modal states
+  const [isTermsModalOpen, setIsTermsModalOpen] = useState(false);
+  const [modalType, setModalType] = useState<'privacy' | 'terms'>('privacy');
 
   const validateEmail = (email: string) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -86,7 +92,7 @@ export default function PricingPage() {
             email: email,
             child_gender: gender === 'male' ? '남아' : gender === 'female' ? '여아' : '미선택',
             child_grade: finalGrade,
-            motivation: (e.currentTarget as any).motivation?.value || ""
+            motivation: motivation
           }
         ]);
 
@@ -341,6 +347,8 @@ export default function PricingPage() {
                   <label className="text-sm font-bold text-charcoal ml-1">신청 동기 (선택)</label>
                   <textarea 
                     name="motivation"
+                    value={motivation}
+                    onChange={(e) => setMotivation(e.target.value)}
                     placeholder="아이의 어떤 점이 가장 걱정되시나요? (예: 말수가 줄어듦, 친구 관계 등)"
                     rows={4}
                     className="w-full px-5 py-4 rounded-md border border-black/10 focus:border-primary-deep focus:ring-4 focus:ring-primary-deep/5 outline-none transition-all font-medium text-charcoal resize-none"
@@ -356,7 +364,22 @@ export default function PricingPage() {
                     className="mt-1 w-5 h-5 rounded border-black/20 text-primary-deep focus:ring-primary-deep"
                   />
                   <label htmlFor="policy-agree" className="text-sm text-medium-gray leading-relaxed">
-                    <Link to="/privacy" className="text-primary-deep underline underline-offset-4 font-bold">개인정보 수집 및 이용</Link> 및 <Link to="/terms" className="text-primary-deep underline underline-offset-4 font-bold">서비스 이용약관</Link>에 동의합니다. (필수)
+                    <button 
+                      type="button"
+                      onClick={() => { setModalType('privacy'); setIsTermsModalOpen(true); }}
+                      className="text-primary-deep underline underline-offset-4 font-bold"
+                    >
+                      개인정보 수집 및 이용
+                    </button>
+                    {" 및 "}
+                    <button 
+                      type="button"
+                      onClick={() => { setModalType('terms'); setIsTermsModalOpen(true); }}
+                      className="text-primary-deep underline underline-offset-4 font-bold"
+                    >
+                      서비스 이용약관
+                    </button>
+                    에 동의합니다. (필수)
                   </label>
                 </div>
                 <motion.button 
@@ -442,6 +465,12 @@ export default function PricingPage() {
           </div>
         </section>
       </div>
+
+      <TermsModal 
+        isOpen={isTermsModalOpen} 
+        onClose={() => setIsTermsModalOpen(false)} 
+        type={modalType} 
+      />
     </div>
   );
 }
