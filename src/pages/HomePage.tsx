@@ -319,13 +319,13 @@ export default function HomePage() {
       {/* S6. Report Preview */}
       <section id="report" className="py-24 md:py-32 bg-warm-white px-6">
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-7 text-center lg:text-left">
+          <div className="lg:col-span-8 text-center lg:text-left">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <SectionHeader badge="REPORT PREVIEW" title={"아이의 마음,\n리포트로 읽어보세요"} sub="매주 제공되는 맞춤형 인사이트로 아이의 보이지 않는 변화를 발견합니다." center={false} />
             </motion.div>
             
             {/* Horizontal Tabs on Mobile */}
-            <div className="flex lg:flex-col gap-2 md:gap-4 mt-6 md:mt-8 overflow-x-auto pb-2 px-4 lg:px-0 no-scrollbar -mx-6 lg:mx-0">
+            <div className="flex lg:flex-col gap-2 md:gap-4 mt-6 md:mt-8 overflow-x-auto pb-2 px-4 lg:px-2 no-scrollbar -mx-6 lg:mx-0">
               {[
                 { id: "daily", title: "일간", fullTitle: "일간 감정 흐름", desc: "오늘 아이가 케이와 나누었던 대화 중 핵심적인 감정 변화를 요약합니다." },
                 { id: "weekly", title: "주간", fullTitle: "주간 심층 분석", desc: "한 주간의 대화 주제를 분류하여 아이의 관심사와 고민을 분석합니다." },
@@ -336,7 +336,7 @@ export default function HomePage() {
                   onClick={() => setReportTab(tab.id as any)} 
                   className={`flex-1 lg:flex-none text-center lg:text-left p-3 md:p-6 rounded-xl border transition-all duration-300 min-w-[90px] md:min-w-[120px] ${
                     reportTab === tab.id 
-                      ? "bg-pure-white border-primary-deep shadow-md lg:translate-x-2 border-b-4" 
+                      ? "bg-pure-white border-primary-deep shadow-md lg:translate-x-4 border-b-4" 
                       : "bg-pure-white/50 border-black/5 hover:border-black/10"
                   }`}
                 >
@@ -359,7 +359,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="lg:col-span-5 flex justify-center items-center order-last lg:order-none">
+          <div className="lg:col-span-4 flex justify-center items-center order-last lg:order-none">
             <div className="relative w-full flex items-center justify-center">
               <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #1A6B5A 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
               <AnimatePresence mode="wait">
@@ -371,7 +371,7 @@ export default function HomePage() {
                   transition={{ duration: 0.4 }} 
                   className="w-full h-full flex items-center justify-center relative z-10"
                 >
-                  <div className="relative w-full max-w-[280px] lg:max-w-[340px] drop-shadow-2xl mx-auto">
+                  <div className="relative w-full max-w-[260px] lg:max-w-[300px] drop-shadow-2xl mx-auto">
                     <img 
                       src={
                         reportTab === 'daily' ? "/images/M4.png" : 
