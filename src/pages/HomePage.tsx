@@ -334,7 +334,7 @@ export default function HomePage() {
                 <button 
                   key={tab.id} 
                   onClick={() => setReportTab(tab.id as any)} 
-                  className={`flex-1 lg:flex-none text-center lg:text-left p-3 md:p-6 rounded-xl border transition-all duration-300 min-w-[90px] md:min-w-[120px] ${
+                  className={`flex-1 lg:flex-none text-center lg:text-left p-3 md:p-6 rounded-xl border transition-all duration-300 min-w-[90px] md:min-w-[120px] lg:max-w-[540px] ${
                     reportTab === tab.id 
                       ? "bg-pure-white border-primary-deep shadow-md lg:translate-x-4 border-b-4" 
                       : "bg-pure-white/50 border-black/5 hover:border-black/10"
