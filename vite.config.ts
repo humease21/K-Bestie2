@@ -20,7 +20,7 @@ export default defineConfig(({mode}) => {
       // Do not modifyâ€”file watching is disabled to prevent flickering during agent edits.
       host: true,
       port: 3000,
-      allowedHosts: ['ai.k-bestie.com'],
+      allowedHosts: ['www.k-bestie.com', 'k-bestie.com'],
       hmr: process.env.DISABLE_HMR !== 'true',
     },
   };
