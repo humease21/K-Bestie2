@@ -254,7 +254,7 @@ export default function HomePage() {
             <div className="space-y-4 lg:col-span-7 order-2 lg:order-1">
               {[
                 { icon: MessageCircle, title: "자연스러운 대화 설계", desc: "아이가 좋아하는 관심사로 시작하여, 전문가가 설계한 질문으로 속마음을 자연스럽게 끌어냅니다.", img: "/images/M3.png" },
-                { icon: Clock, title: "하루 5분의 데이터", desc: "긴 시간이 필요하지 않습니다. 하교 후 5분, 잠들기 전 5분. 하루 두 번의 짧은 대화만으로도 충분한 정서 데이터를 수집합니다.", img: "/images/M3.png" },
+                { icon: Clock, title: "하루 두 번, 5분의 데이터", desc: "긴 시간이 필요하지 않습니다. 하교 후 5분, 잠들기 전 5분. 하루 두 번의 짧은 대화만으로도 충분한 정서 데이터를 수집합니다.", img: "/images/M3.png" },
                 { icon: Heart, title: "따뜻한 분석과 리포트", desc: "단순히 정보를 묻는 것이 아니라, 아이의 감정을 읽어주고 부모님께 인사이트를 제공합니다.", img: "/images/M5.png" }
               ].map((item, i) => (
                 <motion.div 
