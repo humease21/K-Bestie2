@@ -10,7 +10,7 @@ export default function PricingPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phone, setPhone] = useState("");
-  const [grade, setGrade] = useState("초등학교 1학년");
+  const [grade, setGrade] = useState("초등학교 2학년");
   const [customGrade, setCustomGrade] = useState("");
   const [email, setEmail] = useState("");
   const [parentName, setParentName] = useState("");
@@ -318,12 +318,9 @@ export default function PricingPage() {
                         onChange={(e) => setGrade(e.target.value)}
                         className="w-full px-5 py-4 rounded-md border border-black/10 focus:border-primary-deep focus:ring-4 focus:ring-primary-deep/5 outline-none transition-all font-bold appearance-none bg-pure-white text-charcoal"
                       >
-                        <option>초등학교 1학년</option>
                         <option>초등학교 2학년</option>
                         <option>초등학교 3학년</option>
                         <option>초등학교 4학년</option>
-                        <option>초등학교 5학년</option>
-                        <option>초등학교 6학년</option>
                         <option>기타</option>
                       </select>
                       
@@ -410,9 +407,9 @@ export default function PricingPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-charcoal mb-4 font-brand">정식 출시 예정 가격</h2>
             <p className="text-medium-gray font-medium">베타 테스터 기간 종료 후 적용됩니다.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Care Start */}
-            <div className="bg-pure-white rounded-lg shadow-md border border-black/5 p-10 text-center flex flex-col items-center">
+            <div className="bg-pure-white rounded-lg shadow-md border border-black/5 p-10 text-center flex flex-col items-center h-full">
               <span className="inline-block px-3 py-1 rounded-full bg-info-blue/10 text-info-blue text-[11px] font-bold mb-4">
                 ₩10,000 절약
               </span>
@@ -430,13 +427,17 @@ export default function PricingPage() {
                 부담 없이 시작하는 자녀 이해의 첫걸음
               </p>
               
-              <p className="text-dark-gray font-medium text-sm leading-relaxed break-keep">
+              <p className="text-dark-gray font-medium text-sm leading-relaxed break-keep mb-6">
                 아이와 케이의 일상 대화와 미션을 통해 자녀의 하루를 꾸준히 이해할 수 있는 기본 플랜입니다.
               </p>
+              
+              <div className="mt-auto pt-4 border-t border-black/5 w-full text-center text-xs font-semibold text-primary-deep">
+                일일 1분 요약 · 주간 7분 리포트
+              </div>
             </div>
 
             {/* Care Insight */}
-            <div className="bg-pure-white rounded-lg shadow-xl border-2 border-primary-deep p-10 text-center flex flex-col items-center relative overflow-hidden">
+            <div className="bg-pure-white rounded-lg shadow-xl border-2 border-primary-deep p-10 text-center flex flex-col items-center relative overflow-hidden h-full">
               <div className="absolute top-0 right-0 bg-primary-deep text-white px-4 py-1.5 text-[11px] font-bold">
                 추천
               </div>
@@ -455,11 +456,37 @@ export default function PricingPage() {
               </div>
 
               <p className="text-primary-deep font-bold text-lg mb-6 leading-tight break-keep">
-                더 깊이 읽고 더 정확히 돕는 부모 맞춤 인사이트
+                더 깊이 이해하고 싶은 부모님을 위한 맞춤 플랜
               </p>
               
-              <p className="text-dark-gray font-medium text-sm leading-relaxed break-keep">
-                더 풍부한 대화와 분석 기능을 바탕으로 아이의 감정 및 관계 흐름을 더 깊이 이해하는 추천 플랜입니다.
+              <p className="text-dark-gray font-medium text-sm leading-relaxed break-keep mb-6">
+                더 상세한 일일·주간 리포트로 아이의 하루를 더 깊이 따라갑니다.
+              </p>
+              
+              <div className="mt-auto pt-4 border-t border-black/5 w-full text-center text-xs font-semibold text-primary-deep">
+                상세 일일 5분 · 주간 20분 리포트
+              </div>
+            </div>
+
+            {/* Care Premium */}
+            <div className="bg-pure-white rounded-lg shadow-md border border-black/5 p-10 text-center flex flex-col items-center h-full">
+              <div className="h-[30px] mb-4"></div>
+              <h3 className="text-2xl font-bold text-charcoal mb-6">Care Premium</h3>
+              
+              <div className="mb-8">
+                <div className="text-medium-gray text-2xl opacity-0 mb-1">&nbsp;</div>
+                <div className="flex items-center justify-center gap-1">
+                  <span className="text-4xl font-bold text-charcoal">150,000원</span>
+                  <span className="text-lg text-medium-gray font-medium">/ 월</span>
+                </div>
+              </div>
+
+              <p className="text-primary-deep font-bold text-lg mb-6 leading-tight break-keep">
+                아이의 성장을 오래도록 함께 기록하는 프리미엄 플랜
+              </p>
+              
+              <p className="text-dark-gray font-medium text-sm leading-relaxed break-keep mb-6">
+                요약 리포트를 장기 보관해 아이의 성장 흐름을 오래 간직할 수 있는 최상위 플랜입니다.
               </p>
             </div>
           </div>

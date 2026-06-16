@@ -109,12 +109,12 @@ export default function HomePage() {
               ✨ 7월 베타 런칭 | 테스터 사전 모집
             </span>
             <h1 className="text-[32px] md:text-[64px] font-bold text-charcoal leading-[1.2] lg:leading-[1.1] mb-6 md:mb-8 tracking-tight font-brand">
-              아이가 <br className="hidden md:block" />
-              <span className="text-primary-deep">"그냥 괜찮아"</span>라고만 <br className="hidden md:block" />
-              말할 때가 있나요?
+              "오늘 학교 어땠어?"에 <br className="hidden md:block" />
+              <span className="text-primary-deep">"그냥"</span>이라는 답만 <br className="hidden md:block" />
+              돌아오나요?
             </h1>
             <p className="text-[17px] md:text-[22px] text-medium-gray leading-[1.6] mb-8 md:mb-10 max-w-[640px] mx-auto lg:mx-0">
-              학교 이야기나 친구 이야기를 회피하는 아이의 짧은 대답 뒤에 있는 변화를 더 잘 이해하도록 돕는 정서 인사이트 서비스입니다.
+              아이가 케이와 나눈 하루를 요약해 보여주고, 오늘 저녁 어떤 대화를 나누면 좋을지 알려드립니다. 아이의 하루에 다시 연결되세요.
             </p>
             <div className="flex flex-col items-center lg:items-start gap-4">
               <Link to="/pricing" className="w-full md:w-auto">
@@ -169,9 +169,9 @@ export default function HomePage() {
         <div className="max-w-[1200px] mx-auto grid grid-cols-2 lg:flex lg:flex-nowrap justify-center gap-x-8 gap-y-10 lg:gap-x-12">
           {[
             { label: "사전 신청 가정", val: "87+" },
-            { label: "부모 만족도 목표", val: "4.8/5.0" },
-            { label: "매일 미션 주기", val: "하루 5분 × 2회" },
-            { label: "오픈 일정", val: "7월 베타 오픈" }
+            { label: "일일 요약 리포트", val: "1분" },
+            { label: "매일 대화", val: "하루 5분 × 2회" },
+            { label: "베타 오픈", val: "7월" }
           ].map((item, i) => (
             <div key={i} className="flex flex-col lg:flex-row items-center lg:items-center gap-2 lg:gap-3 text-center lg:text-left">
               <span className="text-charcoal font-bold text-xl lg:text-lg">{item.val}</span>
@@ -186,14 +186,14 @@ export default function HomePage() {
       <section id="problem" className="py-24 md:py-32 bg-warm-white px-6">
         <div className="max-w-[1200px] mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <SectionHeader badge="PARENTS' CONCERNS" title={"부모님, 이런 고민을\n하고 계시지는 않나요?"} sub="초등학교 3~4학년 시기, 아이의 마음이 조금씩 닫히기 시작합니다." />
+            <SectionHeader badge="PARENTS' CONCERNS" title={"부모님, 이런 답답함을\n느끼고 계시지는 않나요?"} sub="바쁜 하루 속에서 아이와 제대로 대화할 틈을 놓치고 있습니다." />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              { img: "/images/problem1.png", title: "신호는 있는데 확신이 없다", desc: "아이의 표정이 어두워진 것 같은데, 정말 무슨 일이 있는 건지 아니면 사춘기 시작인지 헷갈려요." },
-              { img: "/images/problem2.png", title: "검색만으로는 알 수 없다", desc: "맘카페나 블로그의 일반적인 정보는 우리 아이의 특수한 상황을 설명해주지 못해 답답합니다." },
-              { img: "/images/problem3.png", title: "다그치면 닫히고, 두면 놓칠까 봐", desc: "자세히 물어보면 짜증을 내고, 그냥 두자니 학교 폭력이나 따돌림 같은 큰 문제를 놓칠까 봐 불안해요." },
-              { img: "/images/problem4.png", title: "부부의 해석이 달라 대화가 엇갈림", desc: "아이 상태를 두고 한 명은 '예민하다', 한 명은 '괜찮다'고 하며 부부 싸움으로 번지기도 합니다." }
+              { img: "/images/problem1.png", title: "물어봐도 돌아오는 답은 \"그냥\"", desc: "\"오늘 어땠어?\"라고 물어도 \"그냥\", \"몰라\"뿐. 아이의 하루가 궁금한데 알 방법이 없어 답답합니다." },
+              { img: "/images/problem2.png", title: "무슨 얘기를 꺼내야 할지 모르겠다", desc: "아이의 하루를 모르니 막상 대화를 시작하려 해도 무슨 말부터 해야 할지 막막합니다." },
+              { img: "/images/problem3.png", title: "바빠서 아이의 하루를 놓친다", desc: "맞벌이로 함께하는 시간이 부족해, 아이가 요즘 무엇에 관심 있고 어떤 기분인지 따라가기 어렵습니다." },
+              { img: "/images/problem4.png", title: "부부의 이야기가 엇갈린다", desc: "아이 상태를 두고 한 명은 '괜찮다', 한 명은 '신경 쓰인다'며 서로 다르게 해석해 대화가 엇갈립니다." }
             ].map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-pure-white rounded-[24px] overflow-hidden border border-black/5 shadow-md hover:shadow-xl transition-all duration-500">
                 <img src={item.img} alt={item.title} className="w-full h-[240px] object-cover" />
@@ -214,9 +214,9 @@ export default function HomePage() {
             <SectionHeader badge="WHY NOT ENOUGH" title={"왜 기존 방식만으로는\n부족할까요?"} />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <FeatureCard icon={Layers} title="단편적인 정보" desc="맘카페나 담임 상담은 특정 시점의 정보만 제공합니다. 아이의 변화를 '선'으로 연결해 보기 어렵습니다." />
-            <FeatureCard icon={EyeOff} title="방어기제의 작동" desc="부모님이 물어볼 때는 아이가 속마음을 숨기기 쉽습니다. 제3자인 '케이'에게는 더 솔직하게 털어놓습니다." />
-            <FeatureCard icon={Puzzle} title="이론과 실전의 차이" desc="육아서의 해결책은 우리 아이의 특수한 상황에 바로 적용하기 어려운 경우가 많습니다." />
+            <FeatureCard icon={Layers} title="단편적인 정보" desc="맘카페나 담임 상담은 특정 시점의 정보만 줍니다. 매일의 아이를 꾸준히 따라가기는 어렵습니다." />
+            <FeatureCard icon={EyeOff} title="부모 앞에서는 닫히는 아이" desc="부모가 직접 물으면 아이는 속마음을 숨기기 쉽습니다. 판단하지 않는 친구 '케이'에게는 더 편하게 이야기합니다." />
+            <FeatureCard icon={Puzzle} title="대화의 실마리가 없다" desc="육아서의 일반론은 '우리 아이'와 오늘 무슨 대화를 나눠야 할지까지는 알려주지 못합니다." />
           </div>
         </div>
       </section>
@@ -225,7 +225,7 @@ export default function HomePage() {
       <section id="solution" className="py-24 md:py-32 bg-pure-white px-6">
         <div className="max-w-[1200px] mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <SectionHeader badge="OUR SOLUTION" title={"아이의 마음을 여는\n작은 습관, 내친구 케이"} sub="심리 전문가의 설계가 반영된 대화로 아이의 마음을 자연스럽게 살핍니다." />
+            <SectionHeader badge="OUR SOLUTION" title={"아이의 하루를 알고,\n대화를 되찾는 가장 쉬운 방법"} sub="아이는 편하게 이야기하고, 부모님은 매일 아이의 하루와 대화거리를 받습니다." />
           </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Image First on Mobile */}
@@ -253,9 +253,9 @@ export default function HomePage() {
 
             <div className="space-y-4 lg:col-span-7 order-2 lg:order-1">
               {[
-                { icon: MessageCircle, title: "자연스러운 대화 설계", desc: "아이가 좋아하는 관심사로 시작하여, 전문가가 설계한 질문으로 속마음을 자연스럽게 끌어냅니다.", img: "/images/M3.png" },
-                { icon: Clock, title: "하루 두 번, 5분의 데이터", desc: "긴 시간이 필요하지 않습니다. 하교 후 5분, 잠들기 전 5분. 하루 두 번의 짧은 대화만으로도 충분한 정서 데이터를 수집합니다.", img: "/images/M3.png" },
-                { icon: Heart, title: "따뜻한 분석과 리포트", desc: "단순히 정보를 묻는 것이 아니라, 아이의 감정을 읽어주고 부모님께 인사이트를 제공합니다.", img: "/images/M5.png" }
+                { icon: MessageCircle, title: "자연스러운 대화", desc: "아이가 좋아하는 관심사로 시작해, 케이가 하루 이야기를 자연스럽게 끌어냅니다. 공부가 아니라 친구와의 수다입니다.", img: "/images/M3.png" },
+                { icon: Clock, title: "하루 두 번, 5분이면 충분", desc: "하교 후 5분, 잠들기 전 5분. 짧은 대화만으로 아이의 하루가 부모님께 전해집니다.", img: "/images/M3.png" },
+                { icon: Heart, title: "오늘의 요약과 대화거리", desc: "그날 아이의 하루를 요약해드리고, 오늘 저녁 어떤 이야기를 나누면 좋을지 대화거리를 추천해드립니다.", img: "/images/M5.png" }
               ].map((item, i) => (
                 <motion.div 
                   key={i} 
@@ -298,7 +298,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <h5 className="font-bold text-lg mb-1">나만의 AI 친구 '케이'</h5>
-                    <p className="text-medium-gray text-[15px] md:text-[16px]">혼내지 않고 내 이야기를 끝까지 들어주는 다정한 단짝 친구가 생깁니다.</p>
+                    <p className="text-medium-gray text-[15px] md:text-[16px]">나를 판단하지 않고 끝까지 들어주는 다정한 단짝 친구가 생깁니다.</p>
                   </div>
                 </div>
                 <div className="flex gap-4 items-start text-left">
@@ -328,8 +328,8 @@ export default function HomePage() {
             <div className="flex lg:flex-col gap-2 md:gap-4 mt-6 md:mt-8 overflow-x-auto pb-2 px-4 lg:px-2 no-scrollbar -mx-6 lg:mx-0">
               {[
                 { id: "daily", title: "일간", fullTitle: "일간 감정 흐름", desc: "오늘 아이가 케이와 나누었던 대화 중 핵심적인 감정 변화를 요약합니다." },
-                { id: "weekly", title: "주간", fullTitle: "주간 심층 분석", desc: "한 주간의 대화 주제를 분류하여 아이의 관심사와 고민을 분석합니다." },
-                { id: "monthly", title: "월간", fullTitle: "월간 성장 리포트", desc: "한 달간의 정서 변화 추이를 그래프로 보여주며 가이드를 제공합니다." }
+                { id: "weekly", title: "주간", fullTitle: "주간 소통 리포트", desc: "한 주간 아이가 나눈 이야기를 모아, 요즘 무엇에 관심 있고 어떤 하루를 보냈는지 알려드립니다." },
+                { id: "monthly", title: "월간", fullTitle: "월간 성장 리포트", desc: "한 달간의 마음 흐름을 그래프로 보여주며 따뜻한 대화 팁을 제공합니다." }
               ].map((tab) => (
                 <button 
                   key={tab.id} 
@@ -353,8 +353,8 @@ export default function HomePage() {
               <p className="text-[15px] text-medium-gray leading-relaxed">
                 {[
                   { id: "daily", desc: "오늘 아이가 케이와 나누었던 대화 중 핵심적인 감정 변화를 요약합니다." },
-                  { id: "weekly", desc: "한 주간의 대화 주제를 분류하여 아이의 관심사와 고민을 분석합니다." },
-                  { id: "monthly", desc: "한 달간의 정서 변화 추이를 그래프로 보여주며 가이드를 제공합니다." }
+                  { id: "weekly", desc: "한 주간 아이가 나눈 이야기를 모아, 요즘 무엇에 관심 있고 어떤 하루를 보냈는지 알려드립니다." },
+                  { id: "monthly", desc: "한 달간의 마음 흐름을 그래프로 보여주며 따뜻한 대화 팁을 제공합니다." }
                 ].find(t => t.id === reportTab)?.desc}
               </p>
             </div>
@@ -393,13 +393,13 @@ export default function HomePage() {
       <section id="safety" className="py-24 md:py-32 bg-charcoal text-white px-6">
         <div className="max-w-[1200px] mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <SectionHeader badge="DATA SAFETY" title={"무엇보다 아이의 안전을\n최우선으로 생각합니다"} center={false} />
+            <SectionHeader badge="DATA SAFETY" title={"무엇보다 아이의 프라이버시를\n최우선으로 생각합니다"} center={false} />
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: ShieldCheck, title: "개인정보 완벽 보안", desc: "아이와 케이의 대화는 Cloud 기반 보안 인프라에 안전하게 저장되며, 서비스 제공 외의 목적으로 사용되지 않습니다." },
-              { icon: HeartHandshake, title: "심리적 안전 장치", desc: "공격적인 발언이나 부적절한 대화가 발생하지 않도록 전문 가이드라인에 따라 철저히 필터링됩니다." },
-              { icon: Users, title: "부모님의 통제권", desc: "아이의 프라이버시와 부모의 알 권리 사이의 균형을 맞추기 위해 인사이트 위주로 제공합니다." }
+              { icon: ShieldCheck, title: "대화 원문은 저장하지 않습니다", desc: "아이와 케이가 나눈 대화는 원문 그대로 저장하지 않고, 요약된 리포트 형태로만 안전하게 관리합니다." },
+              { icon: HeartHandshake, title: "안전한 대화 환경", desc: "부적절한 대화가 발생하지 않도록 전문 가이드라인에 따라 케이의 대화를 세심하게 관리합니다." },
+              { icon: Users, title: "부모님의 균형 잡힌 알 권리", desc: "아이의 프라이버시와 부모님의 알 권리 사이의 균형을 위해, 원문 대신 요약 인사이트만 제공합니다. 또한 혹시 모를 위험 신호가 감지될 경우 부모님께 알려드립니다." }
             ].map((item, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-white/5 border border-white/10 p-10 rounded-[32px] hover:bg-white/10 transition-all group">
                 <item.icon className="w-14 h-14 text-primary-light mb-6 group-hover:scale-110 transition-transform" />
@@ -420,9 +420,9 @@ export default function HomePage() {
           <div className="space-y-4">
             {[
               { q: "정말 무료인가요?", a: "네, 이번 7월 베타 테스트 기간 동안 선정된 100가정은 모든 기능을 완전 무료로 이용하실 수 있습니다." },
-              { q: "몇 살부터 이용 가능한가요?", a: "언어 표현이 정교해지고 자아가 형성되는 초등 3학년부터 6학년까지를 적극 권장합니다." },
-              { q: "매일 대화해야 하나요?", a: "네, 하루 2회(각 5분) 대화를 권장합니다. 최소 2주간 꾸준히 대화해야 정확한 인사이트 리포트가 제공되기 시작합니다. 매일 꾸준히 할수록 감정 흐름과 변화 패턴을 더 정밀하게 파악할 수 있습니다." },
-              { q: "데이터는 안전한가요?", a: "아이의 대화 원문은 부모님께도 직접 공개되지 않으며, AI가 감정과 패턴만 요약하여 리포트로 전달합니다. 데이터는 Cloud 기반 보안 인프라에 저장되며, 부모님의 동의 없이는 절대 제3자에게 제공되지 않습니다. 자세한 데이터 보호 정책은 개인정보처리방침을 참고해 주세요." }
+              { q: "몇 살부터 이용 가능한가요?", a: "언어 표현이 정교해지고 자기 생각이 또렷해지는 초등 2학년부터 4학년까지를 적극 권장합니다." },
+              { q: "매일 대화해야 하나요?", a: "네, 하루 2회(각 5분) 대화를 권장합니다. 최소 2주간 꾸준히 대화해야 더 정확한 요약 리포트가 제공되기 시작합니다. 매일 꾸준히 할수록 아이의 하루를 더 잘 따라갈 수 있습니다." },
+              { q: "데이터는 안전한가요?", a: "아이의 대화는 원문 그대로 저장하지 않으며, 케이가 요약한 리포트 형태로만 안전하게 관리됩니다. 어떤 경우에도 부모님의 동의 없이 제3자에게 제공되지 않습니다. 자세한 내용은 개인정보처리방침을 참고해 주세요." }
             ].map((item, i) => (
               <motion.div key={i} className="bg-pure-white rounded-2xl border border-black/5 overflow-hidden shadow-sm">
                 <button onClick={() => setActiveFaq(activeFaq === i ? null : i)} className="w-full px-6 py-6 text-left flex justify-between items-center group">
@@ -466,7 +466,7 @@ export default function HomePage() {
         <div className="absolute -left-[5%] -top-[10%] w-[400px] h-[400px] bg-pure-white/10 rounded-full blur-[100px]"></div>
         <div className="max-w-3xl mx-auto relative z-10">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }}>
-            <h2 className="text-3xl md:text-[48px] font-bold text-white mb-8 leading-tight font-brand">아이의 보이지 않는 마음,<br />지금 시작해 보세요</h2>
+            <h2 className="text-3xl md:text-[48px] font-bold text-white mb-8 leading-tight font-brand">아이의 하루에 다시 연결되는<br />가장 쉬운 방법</h2>
             <p className="text-white/80 text-lg mb-12 max-w-xl mx-auto leading-relaxed">선착순 100가정에게만 주어지는 무료 베타 혜택을 놓치지 마세요.</p>
             <Link to="/pricing">
               <motion.button whileHover={{ scale: 1.05, backgroundColor: "#FFFFFF", color: "#1A6B5A" }} whileTap={{ scale: 0.95 }} className="bg-pure-white text-primary-deep px-12 py-5 rounded-full text-xl font-bold shadow-2xl">무료 베타 신청하기</motion.button>

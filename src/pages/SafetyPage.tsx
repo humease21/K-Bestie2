@@ -27,7 +27,7 @@ export default function SafetyPage() {
         <section className="mb-24">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Lock, color: "text-secondary-coral", bg: "bg-secondary-coral/5", title: "철저한 데이터 암호화", desc: "아이와 부모님의 모든 데이터는 전송 및 저장 시 최고 수준의 암호화 기술로 보호됩니다." },
+              { icon: Lock, color: "text-secondary-coral", bg: "bg-secondary-coral/5", title: "철저한 데이터 암호화", desc: "아이와 부모님의 정보는 전송·보관 시 최고 수준의 암호화 기술로 보호됩니다. 아이와 케이의 대화 원문은 저장하지 않으며, 요약 리포트 형태로만 안전하게 관리됩니다." },
               { icon: EyeOff, color: "text-primary-deep", bg: "bg-primary-deep/5", title: "개인정보 비식별화", desc: "분석 과정에서 개인 식별 정보는 철저히 비식별화 처리되어 안전하게 관리됩니다." },
               { icon: UserCheck, color: "text-secondary-coral", bg: "bg-secondary-coral/5", title: "엄격한 접근 제어", desc: "허가된 관리자 외에는 데이터에 접근할 수 없으며, 모든 기록은 실시간 모니터링됩니다." }
             ].map((item, i) => (
@@ -56,7 +56,7 @@ export default function SafetyPage() {
               <div className="space-y-10">
                 {[
                   { icon: ShieldCheck, color: "text-primary-deep", title: "유해 콘텐츠 차단", desc: "아이에게 부적절한 언어나 주제가 노출되지 않도록 실시간 필터링 시스템을 운영합니다." },
-                  { icon: Database, color: "text-secondary-coral", title: "데이터 투명성", desc: "데이터 분석 과정을 투명하게 공개하며, 언제든 삭제를 요청하실 수 있습니다." },
+                  { icon: Database, color: "text-secondary-coral", title: "데이터 투명성", desc: "데이터를 어떻게 다루는지 투명하게 공개하며, 언제든 삭제를 요청하실 수 있습니다." },
                   { icon: FileCheck, color: "text-primary-deep", title: "정기적인 보안 감사", desc: "외부 전문 기관을 통해 정기적으로 취약점을 점검하고 시스템을 고도화합니다." }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-6">
@@ -77,8 +77,8 @@ export default function SafetyPage() {
               <h3 className="text-2xl font-bold text-charcoal mb-8">개인정보 처리 방침 요약</h3>
               <div className="space-y-6">
                 {[
-                  { label: "수집 항목", val: "대화 텍스트, 감정 체크 결과, 연락처 및 기본 정보" },
-                  { label: "이용 목적", val: "정서 분석 리포트 생성, 서비스 품질 개선 전용" },
+                  { label: "수집·보관 항목", val: "케이가 생성한 대화 요약 리포트, 신청 정보(보호자 연락처·이메일 등)" },
+                  { label: "이용 목적", val: "하루 요약 리포트 생성 및 부모님께 대화거리 제공" },
                   { label: "보유 기간", val: "서비스 이용 기간 동안 보유, 탈퇴 시 즉시 파기" }
                 ].map((item, i) => (
                   <div key={i} className="p-6 bg-pure-white rounded-md shadow-sm">
@@ -101,7 +101,7 @@ export default function SafetyPage() {
           </div>
           <div className="max-w-3xl mx-auto space-y-6">
             {[
-              { q: "아이의 대화 내용이 다른 곳에 유출되지는 않나요?", a: "절대 유출되지 않습니다. 모든 대화 데이터는 암호화되어 저장되며, 분석 목적 외에는 사용되지 않습니다. 또한, 부모님께 제공되는 리포트도 원문 전체가 아닌 요약된 인사이트 중심으로 제공됩니다." },
+              { q: "아이의 대화 내용이 다른 곳에 유출되지는 않나요?", a: "절대 유출되지 않습니다. 대화 원문은 저장하지 않으며, 요약된 리포트만 암호화되어 안전하게 관리됩니다. 서비스 제공 목적 외에는 사용되지 않습니다." },
               { q: "AI가 아이에게 나쁜 말을 가르치지는 않을까요?", a: "내친구 케이의 AI는 아동용 데이터셋으로 학습되었으며, 다단계 필터링 시스템을 통해 욕설, 비속어, 혐오 표현 등을 완벽하게 차단합니다. 아이에게는 항상 다정하고 긍정적인 대화 상대가 되어줍니다." },
               { q: "데이터를 삭제하고 싶으면 어떻게 하나요?", a: "회원 탈퇴 시 모든 데이터는 즉시 파기됩니다. 또한, 서비스 이용 중에도 특정 기간의 대화 기록 삭제를 요청하실 수 있으며, 요청 즉시 시스템에서 영구 삭제 처리됩니다." }
             ].map((item, i) => (

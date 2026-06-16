@@ -59,8 +59,8 @@ export default function AboutPage() {
             <h2 className="font-hand text-3xl md:text-5xl text-text-main mb-6 md:mb-8 break-keep">누구를 위한 서비스인가요?</h2>
             <ul className="space-y-4 md:space-y-6">
               {[
-                "최근 1~3개월 내 말수가 줄어든 아이",
-                "감정 기복이나 친구 갈등 신호가 보일 때",
+                "최근 대화나 말수가 줄어든 아이",
+                "아이와 무슨 이야기를 나눌지 막막할 때",
                 "학교 이야기를 회피하는 아이의 속마음",
                 "바쁜 일상으로 아이를 세밀히 챙기기 힘들 때",
                 "아이와 더 깊은 대화를 나누고 싶은 부모님"
@@ -88,16 +88,16 @@ export default function AboutPage() {
               판단의 근거 부족
             </h3>
             <p className="text-text-soft leading-relaxed font-medium">
-              검색이나 맘카페 정보만으로는 우리 아이의 특수한 상황을 판단하기 어렵습니다. 내친구 케이는 아이의 실제 대화 데이터를 기반으로 객관적인 인사이트를 제공합니다.
+              검색이나 맘카페 정보만으로는 우리 아이의 특수한 상황을 판단하기 어렵습니다. 내친구 케이는 아이가 케이와 나눈 하루를 요약해, 부모님이 아이의 하루를 이해하도록 돕습니다.
             </p>
           </div>
           <div className="p-10 bg-cream rounded-[3rem] border border-kblue/10">
             <h3 className="text-2xl font-black mb-6 flex items-center gap-3 text-text-main">
               <Lightbulb className="w-8 h-8 text-kblue" />
-              개입 시점의 불확실성
+              대화의 실마리 부족
             </h3>
             <p className="text-text-soft leading-relaxed font-medium">
-              지금 도와줘야 할지, 아니면 스스로 해결하게 지켜봐야 할지 판단하기 어렵습니다. 감정 흐름과 학교생활 신호를 분석하여 적절한 개입 시점을 제안합니다.
+              지금 도와줘야 할지, 아니면 스스로 해결하게 지켜봐야 할지 판단하기 어렵습니다. 아이의 하루를 요약해, 오늘 어떤 대화를 나누면 좋을지 알려드립니다.
             </p>
           </div>
         </div>
@@ -131,15 +131,15 @@ export default function AboutPage() {
             <div className="space-y-6">
               <div className="p-8 bg-white rounded-3xl shadow-sm border border-kblue/10">
                 <h4 className="font-black text-lg mb-2">일일/주간 리포트 확인</h4>
-                <p className="text-sm text-text-soft font-medium">아이의 감정 흐름과 주요 키워드가 정리된 리포트를 확인합니다.</p>
+                <p className="text-sm text-text-soft font-medium">아이의 하루 요약과 관심사가 정리된 리포트를 확인합니다.</p>
               </div>
               <div className="p-8 bg-white rounded-3xl shadow-sm border border-kblue/10">
-                <h4 className="font-black text-lg mb-2">대시보드 인사이트 분석</h4>
-                <p className="text-sm text-text-soft font-medium">특정 기간의 변화 추이를 통해 아이의 상태를 체계적으로 파악합니다.</p>
+                <h4 className="font-black text-lg mb-2">이야기 요약 확인</h4>
+                <p className="text-sm text-text-soft font-medium">매일의 이야기를 자연스럽게 따라가며 대화를 시작할 수 있습니다.</p>
               </div>
               <div className="p-8 bg-white rounded-3xl shadow-sm border border-kblue/10">
-                <h4 className="font-black text-lg mb-2">맞춤형 양육 가이드 활용</h4>
-                <p className="text-sm text-text-soft font-medium">리포트에서 제안하는 대화 팁과 개입 가이드를 참고하여 아이와 소통합니다.</p>
+                <h4 className="font-black text-lg mb-2">맞춤형 대화 가이드 활용</h4>
+                <p className="text-sm text-text-soft font-medium">리포트에서 제안하는 구체적인 대화 팁을 참고하여 아이와 자연스럽게 소통합니다.</p>
               </div>
             </div>
           </div>
@@ -157,15 +157,15 @@ export default function AboutPage() {
               <ul className="space-y-4">
                 <li className="text-base text-text-soft flex items-start gap-3 font-medium">
                   <CheckCircle2 className="w-5 h-5 text-orange shrink-0 mt-0.5" />
-                  아이의 감정 및 일상 데이터의 구조적 시각화
+                  아이의 하루를 한눈에 보는 요약
                 </li>
                 <li className="text-base text-text-soft flex items-start gap-3 font-medium">
                   <CheckCircle2 className="w-5 h-5 text-orange shrink-0 mt-0.5" />
-                  부모의 판단을 돕는 객관적인 인사이트 리포트
+                  아이의 하루를 이해하도록 돕는 리포트
                 </li>
                 <li className="text-base text-text-soft flex items-start gap-3 font-medium">
                   <CheckCircle2 className="w-5 h-5 text-orange shrink-0 mt-0.5" />
-                  적절한 개입 시점과 대화 방법 제안
+                  오늘 나누면 좋을 대화거리 제안
                 </li>
               </ul>
             </div>

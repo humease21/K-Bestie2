@@ -14,12 +14,11 @@ export default function ReportDetailPage() {
           Parent Report & Dashboard
         </div>
         <h1 className="font-hand text-5xl md:text-7xl text-text-main mb-8 leading-tight">
-          아이의 마음을 데이터로 읽다,<br />
-          부모님을 위한 인사이트 리포트
+          아이의 하루를 1분에 읽다,<br />
+          부모님을 위한 요약 리포트
         </h1>
         <p className="text-xl text-text-soft max-w-3xl mx-auto font-medium leading-relaxed">
-          내친구 케이는 아이의 대화 데이터를 분석하여 부모님이 아이의 상태를<br />
-          한눈에 파악하고 적절한 양육 결정을 내릴 수 있도록 돕습니다.
+          아이가 케이와 나눈 하루를 요약해, 오늘 저녁 어떤 대화를 나누면 좋을지 알려드립니다.
         </p>
       </motion.div>
 
@@ -32,12 +31,12 @@ export default function ReportDetailPage() {
             </div>
             <h3 className="text-2xl font-black mb-4">일일 리포트</h3>
             <p className="text-text-soft text-sm leading-relaxed mb-6">
-              오늘 하루 아이가 느낀 주요 감정과 대화 키워드를 요약하여 매일 저녁 전달합니다.
+              오늘 하루 아이가 나눈 주요 대화 주제와 핵심 단어를 요약하여 매일 저녁 전달합니다.
             </p>
             <ul className="space-y-3 text-sm font-bold text-text-main">
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange" /> 주요 감정 요약</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange" /> 핵심 대화 키워드</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange" /> 오늘의 소통 팁</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange" /> 하루 대화 요약</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange" /> 핵심 이야기 키워드</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange" /> 오늘 저녁 대화거리</li>
             </ul>
           </div>
           <div className="p-10 bg-white rounded-[3rem] shadow-xl border border-orange/20 hover:border-kblue/40 transition-all group">
@@ -46,26 +45,26 @@ export default function ReportDetailPage() {
             </div>
             <h3 className="text-2xl font-black mb-4">주간/월간 리포트</h3>
             <p className="text-text-soft text-sm leading-relaxed mb-6">
-              한 주, 한 달 동안의 감정 변화 추이와 반복되는 패턴을 분석하여 심층적인 인사이트를 제공합니다.
+               한 주, 한 달 동안 아이가 자주 이야기한 관심사와 대화 주제의 변화 흐름을 정리하여 보여드립니다.
             </p>
             <ul className="space-y-3 text-sm font-bold text-text-main">
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-kblue" /> 감정 흐름 차트</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-kblue" /> 관계/생활 만족도</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-kblue" /> 심층 행동 분석</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-kblue" /> 주간 대화 요약</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-kblue" /> 관심사 변화 추이</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-kblue" /> 월간 소통 성장 기록</li>
             </ul>
           </div>
           <div className="p-10 bg-white rounded-[3rem] shadow-xl border border-orange/20 hover:border-yellow/60 transition-all group">
             <div className="w-14 h-14 bg-yellow/20 rounded-2xl flex items-center justify-center text-orange-600 mb-8 group-hover:scale-110 transition-transform">
               <AlertCircle className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-black mb-4">알림 리포트</h3>
+            <h3 className="text-2xl font-black mb-4">소통 알림</h3>
             <p className="text-text-soft text-sm leading-relaxed mb-6">
-              부모님의 즉각적인 관심이나 개입이 필요한 특이 신호가 감지될 때 즉시 발송됩니다.
+              아이와 자연스럽게 대화할 수 있도록 지원하며, 혹시 모를 위험 신호가 감지될 경우 부모님께 알려드립니다.
             </p>
             <ul className="space-y-3 text-sm font-bold text-text-main">
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange-600" /> 특이 신호 감지 알림</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange-600" /> 상황별 개입 가이드</li>
-              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange-600" /> 대화 유도 질문지</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange-600" /> 위험 신호 즉시 알림</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange-600" /> 맞춤 소통 가이드</li>
+              <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-orange-600" /> 저녁 대화 유도 팁</li>
             </ul>
           </div>
         </div>
@@ -75,16 +74,16 @@ export default function ReportDetailPage() {
       <section className="mb-32 py-24 bg-kbg rounded-[4rem] px-12 border border-orange/20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div>
-            <h2 className="font-hand text-4xl md:text-6xl text-text-main mb-8">한눈에 보는<br />아이의 마음 대시보드</h2>
+            <h2 className="font-hand text-4xl md:text-6xl text-text-main mb-8">한눈에 보는<br />아이의 이야기 대시보드</h2>
             <div className="space-y-8">
               <div className="flex gap-6">
                 <div className="shrink-0 w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-orange">
                   <BarChart3 className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-black mb-2">감정 흐름 시각화</h4>
+                  <h4 className="text-xl font-black mb-2">아이의 하루 흐름</h4>
                   <p className="text-text-soft leading-relaxed">
-                    기쁨, 슬픔, 화남, 불안 등 아이의 감정 변화를 그래프로 시각화하여 특정 시점의 감정 상태를 쉽게 파악합니다.
+                    기쁨, 즐거움 등 아이가 표현한 오늘 하루의 마음 상태를 요약하여 아이의 하루 흐름을 쉽게 파악합니다.
                   </p>
                 </div>
               </div>
@@ -93,9 +92,9 @@ export default function ReportDetailPage() {
                   <PieChart className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-black mb-2">관심사 키워드 클라우드</h4>
+                  <h4 className="text-xl font-black mb-2">요즘 관심사 요약</h4>
                   <p className="text-text-soft leading-relaxed">
-                    아이가 대화 중 자주 언급하는 단어들을 분석하여 현재 가장 큰 관심사나 고민거리를 보여줍니다.
+                    아이가 대화 중 자주 이야기한 관심 주제와 단어를 모아서 요즘 무엇에 가장 흥미를 보이는지 보여줍니다.
                   </p>
                 </div>
               </div>
@@ -104,9 +103,9 @@ export default function ReportDetailPage() {
                   <FileText className="w-6 h-6" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-black mb-2">미션 수행 리포트</h4>
+                  <h4 className="text-xl font-black mb-2">대화 미션 요약</h4>
                   <p className="text-text-soft leading-relaxed">
-                    학교생활, 친구관계 미션 수행 결과를 통해 아이의 사회성 발달 정도를 구조적으로 이해합니다.
+                    일상 대화와 소통 미션 수행 결과를 통해 아이가 친구들과 어떻게 지내는지 자연스럽게 알 수 있게 돕습니다.
                   </p>
                 </div>
               </div>
@@ -121,37 +120,37 @@ export default function ReportDetailPage() {
                   </div>
                   <div>
                     <h4 className="text-sm font-black">안서아 <span className="text-[10px] font-medium text-text-soft">(7세)</span></h4>
-                    <p className="text-[9px] font-bold text-green-500 uppercase tracking-wider">현재 상태: 안정적임</p>
+                    <p className="text-[9px] font-bold text-green-500 uppercase tracking-wider">오늘 하루: 밝았어요</p>
                   </div>
                 </div>
-                <span className="text-[10px] font-black text-orange italic">AI Insight by K-Bestie</span>
+                <span className="text-[10px] font-black text-orange italic">AI 요약 by K-Bestie</span>
               </div>
               <div className="space-y-6">
                 <div className="p-5 bg-kbg rounded-2xl border border-orange/10">
                   <p className="text-xs text-text-soft leading-relaxed italic">
-                    "오늘 전반적으로 안정적이지만, 또래 관계에서 약간의 아쉬움을 느낀 것으로 보입니다."
+                    "오늘 전반적으로 밝은 기분으로 대화에 참여했으며, 친구들과 함께 있었던 재미있는 일들을 주로 나누었습니다."
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-4 bg-kbg rounded-2xl border border-orange/10">
                     <Heart className="w-4 h-4 text-orange mb-2" />
-                    <p className="text-[9px] text-text-soft font-bold mb-1">감정 변화</p>
-                    <p className="text-xs font-black">매우 긍정적</p>
+                    <p className="text-[9px] text-text-soft font-bold mb-1">오늘 기분</p>
+                    <p className="text-xs font-black">밝았어요</p>
                   </div>
                   <div className="p-4 bg-kbg rounded-2xl border border-orange/10">
                     <Users className="w-4 h-4 text-green-500 mb-2" />
-                    <p className="text-[9px] text-text-soft font-bold mb-1">친구 관계</p>
-                    <p className="text-xs font-black">안정적임</p>
+                    <p className="text-[9px] text-text-soft font-bold mb-1">친구 이야기</p>
+                    <p className="text-xs font-black">자주 나눴어요</p>
                   </div>
                   <div className="p-4 bg-kbg rounded-2xl border border-orange/10">
-                    <AlertCircle className="w-4 h-4 text-red-500 mb-2" />
-                    <p className="text-[9px] text-text-soft font-bold mb-1">학교 스트레스</p>
-                    <p className="text-xs font-black">약간 높음</p>
+                    <AlertCircle className="w-4 h-4 text-kblue mb-2" />
+                    <p className="text-[9px] text-text-soft font-bold mb-1">학교 이야기</p>
+                    <p className="text-xs font-black">즐거웠어요</p>
                   </div>
                   <div className="p-4 bg-kbg rounded-2xl border border-orange/10">
                     <Sparkles className="w-4 h-4 text-kblue mb-2" />
-                    <p className="text-[9px] text-text-soft font-bold mb-1">에너지 레벨</p>
-                    <p className="text-xs font-black">매우 활발함</p>
+                    <p className="text-[9px] text-text-soft font-bold mb-1">하루 에너지</p>
+                    <p className="text-xs font-black">활기찼어요</p>
                   </div>
                 </div>
                 <div className="p-6 bg-kblue rounded-3xl text-white shadow-lg">
@@ -175,7 +174,7 @@ export default function ReportDetailPage() {
       <section className="mb-32">
         <div className="text-center mb-20">
           <h2 className="font-hand text-4xl md:text-6xl text-text-main mb-4">리포트를 어떻게 활용하나요?</h2>
-          <p className="text-text-soft font-medium">단순한 정보 제공을 넘어, 실질적인 양육 가이드를 제안합니다.</p>
+          <p className="text-text-soft font-medium">단순한 정보 제공을 넘어, 실질적인 대화와 소통 가이드를 제안합니다.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="flex gap-8 items-start">
@@ -183,34 +182,34 @@ export default function ReportDetailPage() {
             <div>
               <h4 className="text-2xl font-black mb-4">대화의 물꼬 트기</h4>
               <p className="text-text-soft leading-relaxed">
-                "학교 어땠어?"라는 막연한 질문 대신, 리포트에서 제안하는 구체적인 키워드로 대화를 시작하세요. 아이의 대답이 훨씬 풍성해집니다.
+                "오늘 학교 어땠어?"라는 막연한 질문 대신, 요약 리포트에서 제안하는 구체적인 키워드로 대화를 시작해 보세요. 아이의 대답이 훨씬 풍성해집니다.
               </p>
             </div>
           </div>
           <div className="flex gap-8 items-start">
             <div className="shrink-0 w-16 h-16 bg-white rounded-3xl shadow-md flex items-center justify-center text-kblue font-black text-2xl">02</div>
             <div>
-              <h4 className="text-2xl font-black mb-4">적절한 개입 시점 판단</h4>
+              <h4 className="text-2xl font-black mb-4">자연스러운 대화 유도</h4>
               <p className="text-text-soft leading-relaxed">
-                아이의 부정적인 감정이 일시적인지, 아니면 일주일 이상 지속되는 패턴인지 확인하여 전문가 상담이나 직접적인 개입이 필요한 시점을 결정합니다.
+                아이의 하루 이야기를 바탕으로 오늘 어떤 부분에 대해 더 귀 기울여 주어야 할지 파악하고, 아이와 더 깊이 소통할 수 있는 대화 방향을 제안합니다.
               </p>
             </div>
           </div>
           <div className="flex gap-8 items-start">
             <div className="shrink-0 w-16 h-16 bg-white rounded-3xl shadow-md flex items-center justify-center text-yellow-600 font-black text-2xl">03</div>
             <div>
-              <h4 className="text-2xl font-black mb-4">아이의 강점 발견</h4>
+              <h4 className="text-2xl font-black mb-4">아이의 관심사 발견</h4>
               <p className="text-text-soft leading-relaxed">
-                아이가 어떤 활동에서 가장 큰 성취감을 느끼고 즐거워하는지 데이터를 통해 발견하고, 아이의 자존감을 높여주는 칭찬의 근거로 활용합니다.
+                아이가 요즘 어떤 이야기에서 즐거움을 느끼고 신나 했는지 발견하고, 아이의 자존감을 높여주는 칭찬과 소통의 근거로 활용합니다.
               </p>
             </div>
           </div>
           <div className="flex gap-8 items-start">
             <div className="shrink-0 w-16 h-16 bg-white rounded-3xl shadow-md flex items-center justify-center text-text-main font-black text-2xl">04</div>
             <div>
-              <h4 className="text-2xl font-black mb-4">부모의 정서적 안정</h4>
+              <h4 className="text-2xl font-black mb-4">매일의 따뜻한 교감</h4>
               <p className="text-text-soft leading-relaxed">
-                아이의 변화를 객관적인 수치로 확인하면서, 막연한 불안감에서 벗어나 차분하고 확신 있는 양육 태도를 유지할 수 있습니다.
+                아이의 하루 일상을 꾸준히 파악하면서, 막연한 걱정에서 벗어나 확신을 가지고 자녀와 편안하고 따뜻하게 소통할 수 있습니다.
               </p>
             </div>
           </div>
@@ -219,7 +218,7 @@ export default function ReportDetailPage() {
 
       {/* CTA */}
       <section className="text-center bg-kblue text-white py-24 rounded-[4rem]">
-        <h2 className="font-hand text-5xl md:text-7xl mb-8">우리 아이의 마음 리포트,<br />직접 확인해보세요</h2>
+        <h2 className="font-hand text-5xl md:text-7xl mb-8">아이의 하루 요약과 대화거리,<br />직접 확인해보세요</h2>
         <div className="flex justify-center gap-6">
           <Link to="/pricing">
             <motion.button 
