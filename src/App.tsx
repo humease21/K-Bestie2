@@ -23,6 +23,7 @@ const ALLOWED_ADMIN_EMAILS = ["markanitp@gmail.com"];
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = React.useState<boolean | null>(null);
+  const [accessDenied, setAccessDenied] = React.useState(false);
   const location = useLocation();
 
   React.useEffect(() => {
@@ -32,6 +33,7 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
       const isAllowed = !!session && ALLOWED_ADMIN_EMAILS.includes(email);
       if (session && !isAllowed) {
         await supabase.auth.signOut();
+        setAccessDenied(true);
       }
       setIsAuthenticated(isAllowed);
     };
@@ -42,6 +44,7 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
       const isAllowed = !!session && ALLOWED_ADMIN_EMAILS.includes(email);
       if (session && !isAllowed) {
         await supabase.auth.signOut();
+        setAccessDenied(true);
         setIsAuthenticated(false);
       } else {
         setIsAuthenticated(isAllowed);
@@ -58,7 +61,7 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/admin/login" state={{ from: location }} replace />;
+    return <Navigate to="/admin/login" state={{ from: location, accessDenied }} replace />;
   }
 
   return <>{children}</>;

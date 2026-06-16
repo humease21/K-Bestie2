@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { AlertCircle } from "lucide-react";
 import { supabase } from "../lib/supabase";
 
@@ -8,6 +8,13 @@ export default function AdminLoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.accessDenied) {
+      setError("접근 권한이 없는 계정입니다. 관리자 계정으로 로그인해주세요.");
+    }
+  }, [location.state]);
 
   const handleGoogleLogin = async () => {
     setIsLoading(true);
