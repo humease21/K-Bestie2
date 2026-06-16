@@ -13,7 +13,7 @@ import ContactPage from "./pages/ContactPage";
 import InstitutionalPage from "./pages/InstitutionalPage";
 import SecurityPage from "./pages/SecurityPage";
 import AdminLoginPage from "./pages/AdminLoginPage";
-import AdminDashboardPage from "./pages/AdminDashboardPage";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import TermsOfServicePage from "./pages/TermsOfServicePage";
 import ScrollToTop from "./components/ScrollToTop";
