@@ -302,12 +302,12 @@ export default function AdminDashboardPage() {
                       <Download className="w-3.5 h-3.5" /> 엑셀
                     </button>
                   )}
-                  <button
+                  {activeTab !== "analytics" && <button
                     onClick={fetchData}
                     className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2 text-[13px] font-medium text-medium-gray hover:bg-light-gray rounded-md transition-all"
                   >
                     <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} /> 새로고침
-                  </button>
+                  </button>}
                 </div>
               </div>
 
