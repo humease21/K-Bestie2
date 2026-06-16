@@ -10,7 +10,7 @@ export default function PricingPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [phone, setPhone] = useState("");
-  const [grade, setGrade] = useState("초등학교 2학년");
+  const [grade, setGrade] = useState("초등학교 1학년");
   const [customGrade, setCustomGrade] = useState("");
   const [email, setEmail] = useState("");
   const [parentName, setParentName] = useState("");
@@ -319,9 +319,12 @@ export default function PricingPage() {
                         onChange={(e) => setGrade(e.target.value)}
                         className="w-full px-5 py-4 rounded-md border border-black/10 focus:border-primary-deep focus:ring-4 focus:ring-primary-deep/5 outline-none transition-all font-bold appearance-none bg-pure-white text-charcoal"
                       >
+                        <option>초등학교 1학년</option>
                         <option>초등학교 2학년</option>
                         <option>초등학교 3학년</option>
                         <option>초등학교 4학년</option>
+                        <option>초등학교 5학년</option>
+                        <option>초등학교 6학년</option>
                         <option>기타</option>
                       </select>
                       

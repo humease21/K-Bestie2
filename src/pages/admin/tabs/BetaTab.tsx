@@ -26,7 +26,15 @@ function getFilteredBeta(
     app.parent_name.includes(searchTerm) || app.phone.includes(searchTerm) || app.email.includes(searchTerm)
   );
   if (gradeFilter !== "전체") {
-    filtered = filtered.filter(app => app.child_grade.includes(gradeFilter));
+    filtered = filtered.filter(app => {
+      if (gradeFilter === "기타") {
+        const isElementary = app.child_grade.includes("초등학교") &&
+          ["1학년", "2학년", "3학년", "4학년", "5학년", "6학년"].some(g => app.child_grade.includes(g));
+        return !isElementary;
+      }
+      const gradeNumber = gradeFilter.replace("초", "");
+      return app.child_grade.includes("초등학교") && app.child_grade.includes(`${gradeNumber}학년`);
+    });
   }
   return [...filtered].sort((a, b) => {
     const timeA = new Date(a.created_at).getTime();

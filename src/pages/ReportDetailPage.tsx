@@ -162,6 +162,15 @@ export default function ReportDetailPage() {
                     "서아야, 오늘 학교에서 어떤 일이 너를 가장 크게 웃게 했어?"
                   </p>
                 </div>
+                <div className="p-6 bg-secondary-coral rounded-3xl text-white shadow-lg">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Sparkles className="w-4 h-4" />
+                    <span className="text-[10px] font-black">주말에 함께할래요?</span>
+                  </div>
+                  <p className="text-xs font-bold leading-relaxed">
+                    아이가 이번 주말에 함께하고 싶은 걸 케이에게 살짝 전했어요 💌
+                  </p>
+                </div>
               </div>
             </div>
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-yellow/20 rounded-full blur-3xl"></div>
