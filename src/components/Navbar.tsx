@@ -73,7 +73,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1200px] mx-auto h-full px-5 md:px-8 flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1 shrink-0" onClick={() => { setIsOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
+          <Link to="/" className="flex items-center gap-1 shrink-0" data-track="nav-logo" onClick={() => { setIsOpen(false); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
             <img 
               alt="내친구 케이 Logo" 
               className="h-9 md:h-10 w-auto" 
@@ -119,10 +119,11 @@ export default function Navbar() {
                 베타 신청
               </button>
             </Link>
-            <button 
+            <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-1.5 text-charcoal"
               aria-label="메뉴 열기"
+              data-track="nav-hamburger"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -173,9 +174,10 @@ export default function Navbar() {
               </motion.div>
             </div>
             
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="absolute top-8 right-8 p-2 text-charcoal"
+              data-track="nav-close"
             >
               <X size={32} />
             </button>

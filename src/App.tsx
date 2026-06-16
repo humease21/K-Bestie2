@@ -115,7 +115,11 @@ function NavigationWrapper({ children }: { children: ReactNode }) {
       const trackableElement = target.closest('button, a, [data-track]');
       
       if (trackableElement && !isAdminPath) {
-        const elementText = trackableElement.textContent?.trim() || (trackableElement as any).innerText?.trim();
+        const elementText = trackableElement.textContent?.trim()
+          || trackableElement.getAttribute('aria-label')
+          || trackableElement.querySelector('img')?.getAttribute('alt')
+          || trackableElement.getAttribute('title')
+          || '';
         const elementId = trackableElement.id || trackableElement.getAttribute('data-track') || 'unknown';
         
         try {

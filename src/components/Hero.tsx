@@ -27,14 +27,16 @@ export default function Hero() {
           매일 발견하는 우리 아이만의 특별함. 차가운 수치 대신 따뜻한 이야기로 성장을 기록하고 daily wins를 함께 축하해요.
         </p>
         <div className="flex flex-wrap gap-4">
-          <motion.button 
+          <motion.button
             whileHover={{ rotate: 1, scale: 1.02 }}
+            data-track="hero-start"
             className="bg-coral text-white px-10 py-5 rounded-full text-lg font-black shadow-xl shadow-coral/10 transition-all"
           >
             지금 탐험 시작하기
           </motion.button>
-          <motion.button 
+          <motion.button
             whileHover={{ backgroundColor: "#f3e8ff" }}
+            data-track="hero-guide"
             className="bg-white text-text-main border-2 border-lavender px-10 py-5 rounded-full text-lg font-black transition-all"
           >
             체험 가이드 보기

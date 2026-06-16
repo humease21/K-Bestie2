@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row gap-16 md:gap-8 text-center md:text-left">
           {/* Left Section (60%) */}
           <div className="md:w-[60%] space-y-8 flex flex-col items-center md:items-start">
-            <Link to="/" className="inline-block">
+            <Link to="/" className="inline-block" data-track="footer-logo">
               <img 
                 src="/images/logo2.png" 
                 alt="내친구 케이" 
@@ -39,7 +39,7 @@ export default function Footer() {
 
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-[13px]">
           <p>© 2026 내친구 케이. All rights reserved.</p>
-          <Link to="/admin/login" className="text-white/5 hover:text-white/20 transition-colors">
+          <Link to="/admin/login" className="text-white/5 hover:text-white/20 transition-colors" data-track="footer-admin-lock">
             <Lock className="w-3 h-3" />
           </Link>
         </div>

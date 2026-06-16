@@ -22,9 +22,10 @@ export default function CTA() {
             지금 바로 아이와 함께하는 발견 여행을 시작해보세요. 7일간의 무료 체험으로 매일의 행복을 수집하세요.
           </p>
           
-          <motion.button 
+          <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            data-track="cta-start"
             className="bg-coral text-white px-12 py-6 rounded-full text-2xl font-black shadow-2xl shadow-coral/20 transition-all"
           >
             오늘의 발견 시작하기
