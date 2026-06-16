@@ -11,6 +11,14 @@ export default function AdminLoginPage() {
   const location = useLocation();
 
   useEffect(() => {
+    const originalTitle = document.title;
+    document.title = "관리자 | 내친구 케이";
+    return () => {
+      document.title = originalTitle;
+    };
+  }, []);
+
+  useEffect(() => {
     if (location.state?.accessDenied) {
       setError("접근 권한이 없는 계정입니다. 관리자 계정으로 로그인해주세요.");
     }

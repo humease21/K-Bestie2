@@ -52,6 +52,14 @@ export default function AdminDashboardPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const originalTitle = document.title;
+    document.title = "관리자 | 내친구 케이";
+    return () => {
+      document.title = originalTitle;
+    };
+  }, []);
+
+  useEffect(() => {
     fetchData();
     pollingRef.current = setInterval(fetchData, 30000);
     return () => {
