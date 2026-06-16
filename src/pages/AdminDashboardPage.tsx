@@ -5,7 +5,7 @@ import {
   Users, MessageSquare, LogOut, RefreshCw, Search, 
   ChevronRight, Calendar, User, Phone, Mail, Clock, 
   Download, Eye, EyeOff, CheckCircle2, Inbox, 
-  ChevronLeft, LayoutGrid, BarChart3, AlertCircle, X, CheckCircle, ShieldAlert
+  ChevronLeft, LayoutGrid, BarChart3, AlertCircle, X, CheckCircle
 } from "lucide-react";
 import { supabase } from "../lib/supabase";
 
@@ -66,7 +66,6 @@ export default function AdminDashboardPage() {
   const [selectedInquiry, setSelectedInquiry] = useState<any>(null);
   const [isReplyModalOpen, setIsReplyModalOpen] = useState(false);
   const [replyText, setReplyText] = useState("");
-  const [isSessionExpired, setIsSessionExpired] = useState(false);
   const [inquirySubTab, setInquirySubTab] = useState<"pending" | "resolved">("pending");
   const [betaApps, setBetaApps] = useState<any[]>([]);
   const [inquiries, setInquiries] = useState<any[]>([]);
@@ -102,49 +101,14 @@ export default function AdminDashboardPage() {
   
   const navigate = useNavigate();
 
-  // --- Session Security ---
   useEffect(() => {
-    let timeoutId: any;
-
-    const resetTimer = () => {
-      if (timeoutId) clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        setIsSessionExpired(true);
-      }, 30 * 60 * 1000); // 30 minutes
-    };
-
-    window.addEventListener("mousemove", resetTimer);
-    window.addEventListener("keydown", resetTimer);
-    window.addEventListener("click", resetTimer);
-    resetTimer();
-
-    return () => {
-      window.removeEventListener("mousemove", resetTimer);
-      window.removeEventListener("keydown", resetTimer);
-      window.removeEventListener("click", resetTimer);
-      clearTimeout(timeoutId);
-    };
-  }, []);
-
-  useEffect(() => {
-    const checkSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
-        setIsSessionExpired(true);
-      }
-    };
-
     fetchData();
-    checkSession();
 
     // Auto-refresh polling (30s)
     pollingRef.current = setInterval(fetchData, 30000);
-    // Session check polling
-    const sessionInterval = setInterval(checkSession, 60000);
     
     return () => {
       if (pollingRef.current) clearInterval(pollingRef.current);
-      clearInterval(sessionInterval);
     };
   }, []);
 
@@ -1018,30 +982,7 @@ export default function AdminDashboardPage() {
         )}
       </AnimatePresence>
 
-      {/* Session Expired Modal */}
-      <AnimatePresence>
-        {isSessionExpired && (
-          <div className="fixed inset-0 z-[4000] flex items-center justify-center p-6">
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-md" />
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
-              className="relative bg-pure-white rounded-[1.5rem] p-10 max-w-md w-full shadow-2xl text-center"
-            >
-              <div className="w-20 h-20 bg-[#EF4444]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <ShieldAlert className="w-10 h-10 text-[#EF4444]" />
-              </div>
-              <h3 className="text-[24px] font-bold text-charcoal mb-3">세션이 만료되었습니다</h3>
-              <p className="text-[16px] text-medium-gray mb-10 leading-relaxed">보안을 위해 다시 로그인해 주세요.<br/>30분 이상 비활동 시 자동으로 로그아웃됩니다.</p>
-              <button 
-                onClick={() => navigate("/admin/login")}
-                className="w-full py-4 bg-primary-deep text-white rounded-xl font-bold text-[16px] shadow-xl hover:bg-primary-light transition-all"
-              >
-                다시 로그인하기
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
+
 
       {/* Toasts Container */}
       <div className="fixed top-0 right-0 p-8 z-[2000] pointer-events-none w-full max-w-sm">

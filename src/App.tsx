@@ -19,6 +19,8 @@ import TermsOfServicePage from "./pages/TermsOfServicePage";
 import ScrollToTop from "./components/ScrollToTop";
 import { supabase } from "./lib/supabase";
 
+const ALLOWED_ADMIN_EMAILS = ["markanitp@gmail.com"];
+
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = React.useState<boolean | null>(null);
   const location = useLocation();
@@ -26,12 +28,24 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
   React.useEffect(() => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
-      setIsAuthenticated(!!session);
+      const email = session?.user?.email ?? "";
+      const isAllowed = !!session && ALLOWED_ADMIN_EMAILS.includes(email);
+      if (session && !isAllowed) {
+        await supabase.auth.signOut();
+      }
+      setIsAuthenticated(isAllowed);
     };
     checkAuth();
 
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsAuthenticated(!!session);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      const email = session?.user?.email ?? "";
+      const isAllowed = !!session && ALLOWED_ADMIN_EMAILS.includes(email);
+      if (session && !isAllowed) {
+        await supabase.auth.signOut();
+        setIsAuthenticated(false);
+      } else {
+        setIsAuthenticated(isAllowed);
+      }
     });
 
     return () => subscription.unsubscribe();

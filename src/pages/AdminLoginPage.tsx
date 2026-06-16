@@ -1,33 +1,23 @@
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
-import { Lock, Mail, LogIn, AlertCircle, Eye, EyeOff } from "lucide-react";
+import { AlertCircle } from "lucide-react";
 import { supabase } from "../lib/supabase";
 
 export default function AdminLoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e: FormEvent) => {
-    e.preventDefault();
+  const handleGoogleLogin = async () => {
     setIsLoading(true);
     setError("");
-
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-
-      if (error) throw error;
-      navigate("/admin/dashboard");
-    } catch (err: any) {
-      setError("로그인 정보가 올바르지 않습니다. 다시 확인해주세요.");
-    } finally {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/admin/dashboard` },
+    });
+    if (error) {
+      setError("구글 로그인에 실패했습니다. 다시 시도해주세요.");
       setIsLoading(false);
     }
   };
@@ -60,44 +50,10 @@ export default function AdminLoginPage() {
           </motion.div>
         )}
 
-        <form onSubmit={handleLogin} className="space-y-5">
-          <div className="space-y-1.5">
-            <label className="text-[12px] font-bold text-medium-gray uppercase tracking-wider ml-1">Admin ID</label>
-            <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
-              <input 
-                required
-                type="text" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="아이디를 입력하세요"
-                className="w-full pl-11 pr-4 py-3 rounded-lg border border-black/10 focus:border-primary-deep outline-none transition-all font-medium text-[15px]"
-              />
-            </div>
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-[12px] font-bold text-medium-gray uppercase tracking-wider ml-1">Password</label>
-            <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-medium-gray" />
-              <input 
-                required
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                className="w-full pl-11 pr-12 py-3 rounded-lg border border-black/10 focus:border-primary-deep outline-none transition-all font-medium text-[15px]"
-              />
-              <button 
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-medium-gray hover:text-charcoal"
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </button>
-            </div>
-          </div>
-
+        <div className="space-y-5">
           <motion.button 
+            type="button"
+            onClick={handleGoogleLogin}
             whileHover={{ scale: 1.01, backgroundColor: "#145348" }}
             whileTap={{ scale: 0.99 }}
             disabled={isLoading}
@@ -109,11 +65,11 @@ export default function AdminLoginPage() {
               <div className="w-5 h-5 border-3 border-white/30 border-t-white rounded-full animate-spin"></div>
             ) : (
               <>
-                관리자 접속하기 <LogIn className="w-4 h-4" />
+                Google로 로그인
               </>
             )}
           </motion.button>
-        </form>
+        </div>
         
         <div className="mt-8 text-center text-[12px] text-medium-gray font-medium">
           <p>© 2026 K-Bestie Corp. All rights reserved.</p>
