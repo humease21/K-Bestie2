@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import ModooLogo from "./ModooLogo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,6 +81,10 @@ export default function Navbar() {
               src="/images/logo2.png" 
               referrerPolicy="no-referrer"
             />
+            <div className="hidden md:flex items-center gap-2">
+              <span className="w-[1px] h-4 bg-black/15 mx-1 block" />
+              <ModooLogo />
+            </div>
           </Link>
 
           {/* Desktop Menu */}
