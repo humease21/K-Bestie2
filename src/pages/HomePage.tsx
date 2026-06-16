@@ -321,13 +321,13 @@ export default function HomePage() {
         <div className="max-w-[1200px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-8 text-center lg:text-left">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-              <SectionHeader badge="REPORT PREVIEW" title={"아이의 마음,\n리포트로 읽어보세요"} sub="매주 제공되는 맞춤형 인사이트로 아이의 보이지 않는 변화를 발견합니다." center={false} />
+              <SectionHeader badge="REPORT PREVIEW" title={"아이의 하루,\n1분이면 읽을 수 있어요"} sub="매일·매주 받아보는 요약으로 아이의 오늘을 파악하고 자연스럽게 대화를 시작하세요." center={false} />
             </motion.div>
             
             {/* Horizontal Tabs on Mobile */}
             <div className="flex lg:flex-col gap-2 md:gap-4 mt-6 md:mt-8 overflow-x-auto pb-2 px-4 lg:px-2 no-scrollbar -mx-6 lg:mx-0">
               {[
-                { id: "daily", title: "일간", fullTitle: "일간 감정 흐름", desc: "오늘 아이가 케이와 나누었던 대화 중 핵심적인 감정 변화를 요약합니다." },
+                { id: "daily", title: "일간", fullTitle: "일간 감정 흐름", desc: "오늘 아이가 케이와 나눈 대화의 핵심과, 함께 나누면 좋을 대화거리를 요약해 보여드립니다." },
                 { id: "weekly", title: "주간", fullTitle: "주간 소통 리포트", desc: "한 주간 아이가 나눈 이야기를 모아, 요즘 무엇에 관심 있고 어떤 하루를 보냈는지 알려드립니다." },
                 { id: "monthly", title: "월간", fullTitle: "월간 성장 리포트", desc: "한 달간의 마음 흐름을 그래프로 보여주며 따뜻한 대화 팁을 제공합니다." }
               ].map((tab) => (
@@ -352,7 +352,7 @@ export default function HomePage() {
             <div className="lg:hidden mt-4 text-center">
               <p className="text-[15px] text-medium-gray leading-relaxed">
                 {[
-                  { id: "daily", desc: "오늘 아이가 케이와 나누었던 대화 중 핵심적인 감정 변화를 요약합니다." },
+                  { id: "daily", desc: "오늘 아이가 케이와 나눈 대화의 핵심과, 함께 나누면 좋을 대화거리를 요약해 보여드립니다." },
                   { id: "weekly", desc: "한 주간 아이가 나눈 이야기를 모아, 요즘 무엇에 관심 있고 어떤 하루를 보냈는지 알려드립니다." },
                   { id: "monthly", desc: "한 달간의 마음 흐름을 그래프로 보여주며 따뜻한 대화 팁을 제공합니다." }
                 ].find(t => t.id === reportTab)?.desc}
