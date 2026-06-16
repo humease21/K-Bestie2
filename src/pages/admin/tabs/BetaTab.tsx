@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Search, User, Mail, Eye, EyeOff, Inbox, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, User, Mail, Inbox, ChevronLeft, ChevronRight } from "lucide-react";
 import { getGradeBadgeStyle } from "../lib/adminUtils";
 
 interface BetaTabProps {
@@ -14,8 +14,6 @@ interface BetaTabProps {
   betaPage: number;
   setBetaPage: (fn: (prev: number) => number) => void;
   itemsPerPage: number;
-  showPinId: string | null;
-  setShowPinId: (id: string | null) => void;
 }
 
 function getFilteredBeta(
@@ -44,7 +42,6 @@ export default function BetaTab({
   betaSort, setBetaSort,
   betaPage, setBetaPage,
   itemsPerPage,
-  showPinId, setShowPinId,
 }: BetaTabProps) {
   const filtered = getFilteredBeta(betaApps, searchTerm, gradeFilter, betaSort);
   const paginated = filtered.slice((betaPage - 1) * itemsPerPage, betaPage * itemsPerPage);
@@ -127,25 +124,8 @@ export default function BetaTab({
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex flex-col gap-2">
-                      <div className="flex items-center gap-2 text-[14px] text-dark-gray font-medium">
-                        <Mail className="w-3.5 h-3.5 text-primary-deep" /> {app.email}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="px-3 py-1 bg-light-gray/50 border border-black/5 rounded-md flex items-center gap-2">
-                          <span className="text-[13px] font-mono text-medium-gray">PIN: {showPinId === app.id ? (app.child_pin || "1234") : "••••"}</span>
-                          <button
-                            title="PIN 조회 이력이 기록됩니다"
-                            onClick={() => {
-                              setShowPinId(app.id);
-                              setTimeout(() => setShowPinId(null), 3000);
-                            }}
-                            className="text-medium-gray hover:text-charcoal"
-                          >
-                            {showPinId === app.id ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
-                          </button>
-                        </div>
-                      </div>
+                    <div className="flex items-center gap-2 text-[14px] text-dark-gray font-medium">
+                      <Mail className="w-3.5 h-3.5 text-primary-deep" /> {app.email}
                     </div>
                   </td>
                 </motion.tr>
@@ -208,10 +188,6 @@ export default function BetaTab({
             </div>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-[13px] text-dark-gray"><Mail className="w-3.5 h-3.5" /> {app.email}</div>
-              <div className="flex items-center justify-between bg-light-gray/30 p-2 rounded-md">
-                <span className="text-[12px] font-mono">PIN: {showPinId === app.id ? (app.child_pin || "1234") : "••••"}</span>
-                <button onClick={() => { setShowPinId(app.id); setTimeout(() => setShowPinId(null), 3000); }}><Eye className="w-3.5 h-3.5 text-medium-gray" /></button>
-              </div>
             </div>
           </motion.div>
         ))}

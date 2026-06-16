@@ -36,7 +36,6 @@ export default function AdminDashboardPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [gradeFilter, setGradeFilter] = useState("전체");
   const [betaSort, setBetaSort] = useState<"latest" | "oldest">("latest");
-  const [showPinId, setShowPinId] = useState<string | null>(null);
 
   const [clickSort, setClickSort] = useState<"latest" | "popular">("popular");
   const [clickFilter, setClickFilter] = useState<"week" | "month" | "all">("week");
@@ -323,8 +322,6 @@ export default function AdminDashboardPage() {
                       betaPage={betaPage}
                       setBetaPage={setBetaPage}
                       itemsPerPage={itemsPerPage}
-                      showPinId={showPinId}
-                      setShowPinId={setShowPinId}
                     />
                   )}
                   {activeTab === "click" && (
