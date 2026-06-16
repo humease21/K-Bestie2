@@ -67,7 +67,7 @@ function NavigationWrapper({ children }: { children: ReactNode }) {
         
         try {
           await import('./lib/supabase').then(async ({ supabase }) => {
-            await supabase.from('click_logs').insert([
+            await supabase.from('kbestie_click_logs').insert([
               {
                 element_id: elementId,
                 element_text: elementText?.slice(0, 50),

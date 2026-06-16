@@ -47,7 +47,7 @@ export default function ContactPage() {
 
       // 2. Save to Supabase (NEW!)
       const { error: supabaseError } = await supabase
-        .from('inquiries')
+        .from('kbestie_inquiries')
         .insert([
           {
             name: name,

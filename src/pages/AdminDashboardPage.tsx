@@ -158,9 +158,9 @@ export default function AdminDashboardPage() {
 
   const fetchData = async () => {
     try {
-      const { data: betaData } = await supabase.from("beta_applications").select("*").order("created_at", { ascending: false });
-      const { data: inquiryData } = await supabase.from("inquiries").select("*").order("created_at", { ascending: false });
-      const { data: clickData } = await supabase.from("click_logs").select("*").order("created_at", { ascending: false });
+      const { data: betaData } = await supabase.from("kbestie_beta_applications").select("*").order("created_at", { ascending: false });
+      const { data: inquiryData } = await supabase.from("kbestie_inquiries").select("*").order("created_at", { ascending: false });
+      const { data: clickData } = await supabase.from("kbestie_click_logs").select("*").order("created_at", { ascending: false });
       
       // Identify new rows for highlighting
       if (betaApps.length > 0) {
@@ -194,7 +194,7 @@ export default function AdminDashboardPage() {
       const targetId = isNaN(Number(id)) ? id : Number(id);
       
       const { error, count } = await supabase
-        .from("inquiries")
+        .from("kbestie_inquiries")
         .update({ status: "resolved" }, { count: 'exact' })
         .eq("id", targetId);
       
@@ -225,7 +225,7 @@ export default function AdminDashboardPage() {
       const targetId = isNaN(Number(id)) ? id : Number(id);
 
       const { error, count } = await supabase
-        .from("inquiries")
+        .from("kbestie_inquiries")
         .update({ 
           status: "pending"
         }, { count: 'exact' })

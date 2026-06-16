@@ -70,7 +70,7 @@ export default function PricingPage() {
     try {
       // 1. Duplicate Check
       const { data: existing } = await supabase
-        .from('beta_applications')
+        .from('kbestie_beta_applications')
         .select('id')
         .or(`email.eq.${email},phone.eq.${phone}`)
         .limit(1);
@@ -84,7 +84,7 @@ export default function PricingPage() {
       // 2. Submit to Supabase
       const finalGrade = grade === "기타" ? customGrade : grade;
       const { error: supabaseError } = await supabase
-        .from('beta_applications')
+        .from('kbestie_beta_applications')
         .insert([
           {
             parent_name: parentName,
