@@ -59,6 +59,18 @@ export default function PrivacyPolicyPage() {
             <p>서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 연락처로 문의해주시기 바랍니다.</p>
             <p className="mt-2 text-medium-gray">이메일: contact@humease.com</p>
           </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-charcoal mb-4">7. 방문 분석을 위한 익명 정보 수집</h2>
+            <p>서비스 품질 개선을 위해 방문자의 익명 세션 정보를 수집합니다. 이 정보는 특정 개인을 식별할 수 없으며 아래와 같이 처리됩니다.</p>
+            <ul className="list-disc pl-5 mt-2 space-y-1 text-medium-gray">
+              <li>수집 항목: 익명 세션 키(무작위 UUID), 방문 페이지 경로, 유입 경로(referrer), UTM 파라미터</li>
+              <li>미수집 항목: IP 주소, 로그인 정보, 기기 고유 식별자 등 개인 식별 정보는 수집하지 않습니다.</li>
+              <li>저장 방식: 세션 키는 브라우저의 sessionStorage에만 저장되며 탭(브라우저 창) 종료 시 자동 삭제됩니다. 서버에는 UUID 형태의 익명 키만 기록됩니다.</li>
+              <li>이용 목적: 페이지별 방문 통계, 유입 채널 분석 등 서비스 개선 목적으로만 활용합니다.</li>
+              <li>보유 기간: 서비스 운영 기간 동안 보관하며 서비스 종료 시 파기합니다.</li>
+            </ul>
+          </section>
         </div>
 
         <div className="mt-12 pt-8 border-t border-black/5 text-sm text-medium-gray text-center">

@@ -92,7 +92,8 @@ export default function PricingPage() {
             email: email,
             child_gender: gender === 'male' ? '남아' : gender === 'female' ? '여아' : '미선택',
             child_grade: finalGrade,
-            motivation: motivation
+            motivation: motivation,
+            session_id: sessionStorage.getItem('k_session_id') || undefined
           }
         ]);
 

@@ -23,6 +23,92 @@ export function getFilteredClickLogs(
   return filtered;
 }
 
+export function mapReferrer(referrer: string, utmSource?: string): string {
+  if (utmSource) return utmSource;
+  if (!referrer) return '직접';
+  if (referrer.includes('naver')) return 'naver';
+  if (referrer.includes('google')) return 'google';
+  if (referrer.includes('instagram') || referrer.includes('ig.me')) return 'instagram';
+  if (referrer.includes('youtube') || referrer.includes('youtu.be')) return 'youtube';
+  return '기타';
+}
+
+export function getFilteredPageViews(
+  pageViews: any[],
+  filter: "week" | "month" | "all"
+): any[] {
+  if (filter === "all") return pageViews;
+  const threshold = new Date();
+  if (filter === "week") threshold.setDate(threshold.getDate() - 7);
+  if (filter === "month") threshold.setMonth(threshold.getMonth() - 1);
+  return pageViews.filter(pv => new Date(pv.created_at) >= threshold);
+}
+
+export interface AnalyticsSummary {
+  uniqueVisitors: number;
+  totalPageViews: number;
+  betaCount: number;
+  conversionRate: number;
+}
+
+export function getAnalyticsSummary(
+  filteredPageViews: any[],
+  betaCount: number
+): AnalyticsSummary {
+  const uniqueVisitors = new Set(filteredPageViews.map(pv => pv.session_id)).size;
+  const conversionRate = uniqueVisitors > 0
+    ? parseFloat(((betaCount / uniqueVisitors) * 100).toFixed(1))
+    : 0;
+  return { uniqueVisitors, totalPageViews: filteredPageViews.length, betaCount, conversionRate };
+}
+
+export interface ChannelStat {
+  channel: string;
+  visitors: number;
+  conversions: number;
+  conversionRate: string;
+}
+
+export function getChannelStats(
+  pageViews: any[],
+  betaApps: any[],
+  filter: "week" | "month" | "all"
+): ChannelStat[] {
+  const filtered = getFilteredPageViews(pageViews, filter);
+  const filteredSessions = new Set(filtered.map((pv: any) => pv.session_id));
+
+  const sessionChannel: Record<string, string> = {};
+  filtered.forEach((pv: any) => {
+    if (!sessionChannel[pv.session_id]) {
+      sessionChannel[pv.session_id] = mapReferrer(pv.referrer || '', pv.utm_source || undefined);
+    }
+  });
+
+  const visitorsByChannel: Record<string, Set<string>> = {};
+  Object.entries(sessionChannel).forEach(([sid, ch]) => {
+    if (!visitorsByChannel[ch]) visitorsByChannel[ch] = new Set();
+    visitorsByChannel[ch].add(sid);
+  });
+
+  const conversionsByChannel: Record<string, number> = {};
+  betaApps.forEach((app: any) => {
+    if (app.session_id && filteredSessions.has(app.session_id)) {
+      const ch = sessionChannel[app.session_id] || '기타';
+      conversionsByChannel[ch] = (conversionsByChannel[ch] || 0) + 1;
+    }
+  });
+
+  const channels = ['직접', 'naver', 'google', 'instagram', 'youtube', '기타'];
+  return channels.map(ch => {
+    const visitors = visitorsByChannel[ch]?.size || 0;
+    const conversions = conversionsByChannel[ch] || 0;
+    const conversionRate = visitors > 0
+      ? ((conversions / visitors) * 100).toFixed(1)
+      : '0.0';
+    return { channel: ch, visitors, conversions, conversionRate };
+  });
+}
+
 export function downloadCSV(
   activeTab: "click" | "inquiry" | "beta",
   betaApps: any[],

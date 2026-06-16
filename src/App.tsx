@@ -71,6 +71,42 @@ function NavigationWrapper({ children }: { children: ReactNode }) {
   const location = useLocation();
   const isAdminPath = location.pathname.startsWith('/admin');
 
+  // 익명 세션 ID — 탭 종료 시 소멸, 영구 추적 아님
+  const [sessionId] = React.useState<string>(() => {
+    let id = sessionStorage.getItem('k_session_id');
+    if (!id) {
+      id = crypto.randomUUID();
+      sessionStorage.setItem('k_session_id', id);
+    }
+    return id;
+  });
+
+  // 페이지뷰 기록 — 기존 클릭 수집과 완전 독립
+  React.useEffect(() => {
+    if (isAdminPath) return;
+    let cancelled = false;
+    const isFirst = !sessionStorage.getItem('k_session_first_pv');
+    const params = new URLSearchParams(window.location.search);
+    const referrer = isFirst ? (document.referrer || null) : null;
+    const utmSource = isFirst ? (params.get('utm_source') || null) : null;
+    const utmMedium = isFirst ? (params.get('utm_medium') || null) : null;
+    const utmCampaign = isFirst ? (params.get('utm_campaign') || null) : null;
+    import('./lib/supabase').then(async ({ supabase }) => {
+      if (cancelled) return;
+      await supabase.from('kbestie_page_views').insert([{
+        session_id: sessionId,
+        page_path: location.pathname,
+        referrer,
+        utm_source: utmSource,
+        utm_medium: utmMedium,
+        utm_campaign: utmCampaign,
+        user_agent: navigator.userAgent,
+      }]);
+      if (isFirst) sessionStorage.setItem('k_session_first_pv', '1');
+    }).catch(err => console.error('Pageview tracking error:', err));
+    return () => { cancelled = true; };
+  }, [location.pathname, isAdminPath, sessionId]);
+
   // 클릭 이벤트 추적 로직
   React.useEffect(() => {
     const handleGlobalClick = async (e: MouseEvent) => {
@@ -89,7 +125,8 @@ function NavigationWrapper({ children }: { children: ReactNode }) {
                 element_id: elementId,
                 element_text: elementText?.slice(0, 50),
                 page_path: location.pathname,
-                user_agent: navigator.userAgent
+                user_agent: navigator.userAgent,
+                session_id: sessionId
               }
             ]);
           });
@@ -102,7 +139,7 @@ function NavigationWrapper({ children }: { children: ReactNode }) {
 
     window.addEventListener('click', handleGlobalClick);
     return () => window.removeEventListener('click', handleGlobalClick);
-  }, [location.pathname, isAdminPath]);
+  }, [location.pathname, isAdminPath, sessionId]);
 
   return (
     <div className="min-h-screen selection:bg-orange/20 selection:text-orange bg-cream/10">

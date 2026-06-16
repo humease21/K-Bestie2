@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -14,8 +14,11 @@ import InquiryTab from "./tabs/InquiryTab";
 import ClickLogsTab from "./tabs/ClickLogsTab";
 import { downloadCSV } from "./lib/adminUtils";
 
+const AnalyticsTab = lazy(() => import('./tabs/AnalyticsTab'));
+
 export default function AdminDashboardPage() {
-  const [activeTab, setActiveTab] = useState<"click" | "inquiry" | "beta">("click");
+  const [activeTab, setActiveTab] = useState<"click" | "inquiry" | "beta" | "analytics">("click");
+  const [analyticsTabMounted, setAnalyticsTabMounted] = useState(false);
   const [selectedInquiry, setSelectedInquiry] = useState<any>(null);
   const [isReplyModalOpen, setIsReplyModalOpen] = useState(false);
   const [replyText, setReplyText] = useState("");
@@ -229,11 +232,15 @@ export default function AdminDashboardPage() {
           {[
             { id: "click", label: "실시간 클릭 로그" },
             { id: "inquiry", label: "1:1 문의 리스트" },
-            { id: "beta", label: "베타 신청 현황" }
+            { id: "beta", label: "베타 신청 현황" },
+            { id: "analytics", label: "방문자 분석" }
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as any)}
+              onClick={() => {
+                setActiveTab(tab.id as any);
+                if (tab.id === 'analytics') setAnalyticsTabMounted(true);
+              }}
               className={`px-6 py-4 text-[13px] md:text-[15px] whitespace-nowrap font-medium transition-all relative ${
                 activeTab === tab.id ? "text-primary-deep font-bold" : "text-medium-gray hover:text-charcoal"
               }`}
@@ -259,7 +266,7 @@ export default function AdminDashboardPage() {
               <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <div className="flex items-center gap-4">
                   <h3 className="text-[20px] font-bold text-charcoal">
-                    {activeTab === "beta" ? "명단" : activeTab === "click" ? "로그" : "문의"}
+                    {activeTab === "beta" ? "명단" : activeTab === "click" ? "로그" : activeTab === "inquiry" ? "문의" : "방문자 분석"}
                   </h3>
                   {activeTab === "inquiry" && (
                     <div className="flex gap-2">
@@ -287,12 +294,14 @@ export default function AdminDashboardPage() {
                   )}
                 </div>
                 <div className="flex gap-2 w-full md:w-auto">
-                  <button
-                    onClick={() => downloadCSV(activeTab, betaApps, inquiries, clickLogs, addToast)}
-                    className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2 border border-black/10 rounded-md text-[13px] font-medium text-dark-gray hover:bg-light-gray transition-all"
-                  >
-                    <Download className="w-3.5 h-3.5" /> 엑셀
-                  </button>
+                  {activeTab !== "analytics" && (
+                    <button
+                      onClick={() => downloadCSV(activeTab, betaApps, inquiries, clickLogs, addToast)}
+                      className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2 border border-black/10 rounded-md text-[13px] font-medium text-dark-gray hover:bg-light-gray transition-all"
+                    >
+                      <Download className="w-3.5 h-3.5" /> 엑셀
+                    </button>
+                  )}
                   <button
                     onClick={fetchData}
                     className="flex-1 md:flex-none flex items-center justify-center gap-1.5 px-3 py-2 text-[13px] font-medium text-medium-gray hover:bg-light-gray rounded-md transition-all"
@@ -354,6 +363,21 @@ export default function AdminDashboardPage() {
                     />
                   )}
                 </>
+              )}
+
+              {/* AnalyticsTab — 첫 클릭 후 마운트 유지, 폴링 대상 아님 */}
+              {analyticsTabMounted && (
+                <div className={activeTab === 'analytics' ? 'block' : 'hidden'}>
+                  <Suspense
+                    fallback={
+                      <div className="flex justify-center py-20">
+                        <div className="w-8 h-8 border-4 border-primary-deep/20 border-t-primary-deep rounded-full animate-spin" />
+                      </div>
+                    }
+                  >
+                    <AnalyticsTab isVisible={activeTab === 'analytics'} betaApps={betaApps} />
+                  </Suspense>
+                </div>
               )}
             </motion.div>
           </AnimatePresence>
