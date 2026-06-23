@@ -57,7 +57,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-xl font-bold text-charcoal mb-4">6. 개인정보 보호책임자</h2>
             <p>서비스 이용 중 발생하는 모든 개인정보 보호 관련 민원은 아래의 연락처로 문의해주시기 바랍니다.</p>
-            <p className="mt-2 text-medium-gray">이메일: contact@humease.com</p>
+            <p className="mt-2 text-medium-gray">이메일: hjan21@outlook.com</p>
           </section>
 
           <section>

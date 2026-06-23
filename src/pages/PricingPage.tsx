@@ -106,7 +106,7 @@ export default function PricingPage() {
       submissionData.append("이메일주소", email);
       submissionData.append("자녀학년", finalGrade);
       
-      await fetch("https://formsubmit.co/ajax/contact@humease.com", {
+      await fetch("https://formsubmit.co/ajax/hjan21@outlook.com", {
         method: "POST",
         body: submissionData,
         headers: { 'Accept': 'application/json' }

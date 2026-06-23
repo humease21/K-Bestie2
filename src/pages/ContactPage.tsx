@@ -37,7 +37,7 @@ export default function ContactPage() {
       submissionData.append("문의내용", message);
       
       // 1. Send Email via FormSubmit
-      const mailResponse = await fetch("https://formsubmit.co/ajax/contact@humease.com", {
+      const mailResponse = await fetch("https://formsubmit.co/ajax/hjan21@outlook.com", {
         method: "POST",
         body: submissionData,
         headers: {
