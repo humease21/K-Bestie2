@@ -468,7 +468,7 @@ export default function PricingPage() {
               </p>
               
               <div className="mt-auto pt-4 border-t border-black/5 w-full text-center text-xs font-semibold text-primary-deep">
-                상세 일일 5분 · 주간 20분 리포트
+                상세 일일 3분 · 주간 20분 리포트
               </div>
             </div>
 
